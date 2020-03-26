@@ -22,8 +22,8 @@ public class ObtenerMemoria {
 
         try {
 
-            FileReader archivo = new FileReader("C:\\Users\\nanop\\Downloads\\MemoriaLibre.txt");
-            FileReader archivo2 = new FileReader("C:\\Users\\nanop\\Downloads\\MemoriaTotal.txt");
+            FileReader archivo = new FileReader("C:\\Users\\YEISON\\Downloads\\MemoriaLibre.txt");
+            FileReader archivo2 = new FileReader("C:\\Users\\YEISON\\Downloads\\MemoriaTotal.txt");
 
             //Se pone int porque este lo lee pasa directamente como lo entiende la maquina en 1 y 0
             //Para solucionar el problema de que el primer caracter no lo lee, podemos inicializar memoria a 0 o 

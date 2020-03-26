@@ -23,8 +23,8 @@ public class ObtenerMemoria2 {
         try {
 
             //Ubicacion archivo
-            FileReader direccion = new FileReader("C:\\Users\\nanop\\Downloads\\MemoriaLibre.txt");
-            FileReader direccion2 = new FileReader("C:\\Users\\nanop\\Downloads\\MemoriaTotal.txt");
+            FileReader direccion = new FileReader("C:\\Users\\YEISON\\Downloads\\MemoriaLibre.txt");
+            FileReader direccion2 = new FileReader("C:\\Users\\YEISON\\Downloads\\MemoriaTotal.txt");
 
             //Le decimos a buffer que lea lo que está en esa direccion y lo guarde en entradaBuffer 1 y 2 
             BufferedReader entradaBuffer = new BufferedReader(direccion);
