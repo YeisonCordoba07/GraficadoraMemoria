@@ -71,15 +71,15 @@ public class Graficadora extends javax.swing.JFrame {
         });
 //        Hilo ejecutarScript = new Hilo();
 //        ejecutarScript.run();
-//            ObtenerMemoria memoria = new ObtenerMemoria();
-//            memoria.leer();
-        ObtenerMemoria2 memoria2 = new ObtenerMemoria2();
-        memoria2.leer();
+        ObtenerMemoria memoria = new ObtenerMemoria();
+        memoria.leer();
+//        ObtenerMemoria2 memoria2 = new ObtenerMemoria2();
+//        memoria2.leer();
 
+//            Pintar pintar = new Pintar();
+//            pintar.run();
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     // End of variables declaration//GEN-END:variables
-
-
 }
