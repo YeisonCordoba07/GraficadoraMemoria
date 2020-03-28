@@ -11,14 +11,14 @@ import java.util.Timer;
 
 /**
  *
- * @author nanop
+ * @author YEISON
  */
-public class Hilo extends Thread {
+public class EjecutarScript extends Thread {
 
     @Override
     public void run() {
         try {
-            timer.scheduleAtFixedRate(tarea, 1000, 4000);
+            timer.scheduleAtFixedRate(tarea, 0, 4000);
 
         } catch (Exception e) {
             System.out.println("Error gg: " + e);

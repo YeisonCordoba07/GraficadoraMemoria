@@ -10,7 +10,7 @@ import java.util.Timer;
 
 /**
  *
- * @author nanop
+ * @author YEISON
  */
 public class Graficadora extends javax.swing.JFrame {
 
@@ -69,18 +69,15 @@ public class Graficadora extends javax.swing.JFrame {
                 new Graficadora().setVisible(true);
             }
         });
-//        Hilo ejecutarScript = new Hilo();
+//        EjecutarScript ejecutarScript = new EjecutarScript();
 //        ejecutarScript.run();
         ObtenerMemoria memoria = new ObtenerMemoria();
-        memoria.leer();
+        memoria.run();
 //        ObtenerMemoria2 memoria2 = new ObtenerMemoria2();
 //        memoria2.leer();
 
-//            Pintar pintar = new Pintar();
-//            pintar.run();
-
-//    Prueba p = new Prueba();
-//    p.leer();
+//        Pintar pintar = new Pintar();
+//        pintar.run();
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
