@@ -11,7 +11,7 @@ import java.io.IOException;
 
 /**
  *
- * @author nanop
+ * @author YEISON
  */
 public class ObtenerMemoria {
 
