@@ -78,6 +78,9 @@ public class Graficadora extends javax.swing.JFrame {
 
 //            Pintar pintar = new Pintar();
 //            pintar.run();
+
+//    Prueba p = new Prueba();
+//    p.leer();
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

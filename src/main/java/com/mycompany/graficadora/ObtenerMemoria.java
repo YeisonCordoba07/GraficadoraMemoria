@@ -50,33 +50,64 @@ public class ObtenerMemoria {
                 memoriaTotalString += memoriaChar;
             }
 
-            System.out.println("Memoria Libre 10:"+memoriaLibreString+":Memoria Libre fin 20");
-            System.out.println("Memoria total 1:"+memoriaTotalString+"Memoria total 2");
+            System.out.println("Memoria Libre Completa Inicio:" + memoriaLibreString + ":Memoria Libre Completa Final");
+            System.out.println("");
+            System.out.println("Memoria total Completa Inicio:" + memoriaTotalString + "Memoria total Completa Final");
+            System.out.println("");
 
-            //Guarda la el valor de la memoria libre en 'memoriaRamString', para ello saca ese valor como una subcadena
+            //Guarda la el valor de la memoria libre en 'memoriaLibreCortada', para ello saca ese valor como una subcadena
             //Aquí hay que poner la posicion exacta de donde estará la memoria
-            String memoriaLibreCortada = memoriaLibreString.substring(149, 158);
-            String memoriaRamTotalCortada = memoriaTotalString.substring(149, 158);
+//            String memoriaLibreCortada = memoriaLibreString.substring(149, 158);
+//            String memoriaTotalCortada = memoriaTotalString.substring(149, 158);
+            String memoriaLibreCortada = memoriaLibreString.substring(201, 210);
+            String memoriaTotalCortada = memoriaTotalString.substring(201, 210);
+
+            System.out.println("INICIO MEMORIA LIBRE CORTE:" + memoriaLibreCortada + ":FIN CORTE");
+            System.out.println("");
+            System.out.println("INICIO MEMORIA TOTAL CORTE:" + memoriaTotalCortada + ":FIN TOTAL CORTE");
+            System.out.println("");
+
             
-            
-            System.out.println("INICIO CORTE:" + memoriaLibreCortada+ ":FIN CORTE");
-            System.out.println("INICIO TOTAL CORTE:" + memoriaRamTotalCortada+ ":FIN TOTAL CORTE");
+            //Le quita los espacios vacios a memoriaLibreCortada y memoriaTotalCortada --> 3_._0_9_2   8_._0_0_0_2
+            String a = "";
+            for (int i = 0; i < memoriaLibreCortada.length(); i++) {
+
+                if (i %2 == 0) {
+                    char c = memoriaLibreCortada.charAt(i);
+                    a += Character.toString(c);
+                    System.out.println("I =" + i + "== A=" + a);
+                }
+            }
+            String b = "";
+            for (int i = 0; i < memoriaTotalCortada.length(); i++) {
+
+                if (i %2 == 0) {
+                    char c = memoriaTotalCortada.charAt(i);
+                    b += Character.toString(c);
+                    System.out.println("I =" + i + "== B=" + b);
+                }
+            }
 
             //El punto significa mil, pero en java este significa que es un decimal, entonces hay que quitarlo
-            memoriaLibreCortada = memoriaLibreCortada.replace(".", "");
-            memoriaRamTotalCortada = memoriaRamTotalCortada.replace(".", "");
-            System.out.println(memoriaLibreCortada);
-            System.out.println(memoriaRamTotalCortada);
-            
-            
+            memoriaLibreCortada = a.replace(".", "");
+            memoriaTotalCortada = b.replace(".", "");
+            System.out.println("Memoria libre cortada sin el punto: "+memoriaLibreCortada);
+            System.out.println("Memoria total cortada sin el punto: "+memoriaTotalCortada);
+
             //Esto quita los espacios que hayan al principio o al final
             memoriaLibreCortada.trim();
-            memoriaRamTotalCortada.trim();
-            
+            memoriaTotalCortada.trim();
+
+
+            System.out.println("El tamaño de memoria libre cortada es: " + memoriaLibreCortada.length());
+            System.out.println("El tamaño de memoria total cortada es: " + memoriaTotalCortada.length());
+
+
             /*AQUÍ HAY UN ERROR DE JAVA, NO CONVIERTE CORRECTAMENTE APESAR DE QUE ESTÁ BIEN*/
-            //Convierte el valor de la subcadena que tiene la memoria libre a double
+            //Convierte el valor de la subcadena que tiene la memoria libre a int
             int memoriaRam = Integer.parseInt(memoriaLibreCortada);
-            int memoriaRamTotal = Integer.parseInt(memoriaRamTotalCortada);
+            int memoriaRamTotal = Integer.parseInt(memoriaTotalCortada);
+
             
 
             System.out.println("La memoria libre es: "+memoriaRam);
