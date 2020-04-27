@@ -17,11 +17,12 @@ import java.util.TimerTask;
  */
 public class ObtenerMemoria extends Thread {
 
+    int memoriaRamUtilizada;
     Pintar pintar = new Pintar();
     @Override
     public void run() {
         try {
-            timer.scheduleAtFixedRate(tarea, 1000, 4000);
+            timer.scheduleAtFixedRate(tarea, 2000, 4000);
         } catch (Exception e) {
             System.out.println("Error gg: " + e);
         }
@@ -48,8 +49,8 @@ public class ObtenerMemoria extends Thread {
 
         try {
 
-            FileReader archivo = new FileReader("C:\\Users\\YEISON\\Downloads\\MemoriaLibre.txt");
-            FileReader archivo2 = new FileReader("C:\\Users\\YEISON\\Downloads\\MemoriaTotal.txt");
+            FileReader archivo = new FileReader("C:\\Users\\nanop\\Downloads\\MemoriaLibre.txt");
+            FileReader archivo2 = new FileReader("C:\\Users\\nanop\\Downloads\\MemoriaTotal.txt");
 
             //Se pone int porque este lo lee y lo pasa directamente como lo entiende la maquina en 1 y 0
             //Para solucionar el problema de que el primer caracter no lo lee, podemos inicializar memoria a 0 
@@ -85,21 +86,27 @@ public class ObtenerMemoria extends Thread {
             //Aquí hay que poner la posicion exacta de donde estará la memoria
 //            String memoriaLibreCortada = memoriaLibreString.substring(149, 158);
 //            String memoriaTotalCortada = memoriaTotalString.substring(149, 158);
-            String memoriaLibreCortada = memoriaLibreString.substring(201, 210);
-            String memoriaTotalCortada = memoriaTotalString.substring(201, 210);
+//            String memoriaLibreCortada = memoriaLibreString.substring(201, 210);
+//            String memoriaTotalCortada = memoriaTotalString.substring(201, 210);
+            String memoriaLibreCortada = memoriaLibreString.substring(199, 208);
+            String memoriaTotalCortada = memoriaTotalString.substring(199, 208);
+            
 
             System.out.println("INICIO MEMORIA LIBRE CORTE:" + memoriaLibreCortada + ":FIN CORTE");
             System.out.println("");
             System.out.println("INICIO MEMORIA TOTAL CORTE:" + memoriaTotalCortada + ":FIN TOTAL CORTE");
             System.out.println("");
 
-            //Le quita los espacios vacios a memoriaLibreCortada y memoriaTotalCortada --> 3_._0_9_2   8_._0_0_0_2
+            //Le quita los espacios vacios a memoriaLibreCortada y memoriaTotalCortada --> 3_._0_9_2   8_._0_0_2  7_0_9
             String a = "";
             for (int i = 0; i < memoriaLibreCortada.length(); i++) {
 
                 if (i % 2 == 0) {
                     char c = memoriaLibreCortada.charAt(i);
                     a += Character.toString(c);
+                    a = a.replace("M", "");
+                    a = a.replace("B", "");
+                    a = a.replace(" ", "");
                     System.out.println("I =" + i + "== A=" + a);
                 }
             }
@@ -116,8 +123,8 @@ public class ObtenerMemoria extends Thread {
             //El punto significa mil, pero en java este significa que es un decimal, entonces hay que quitarlo
             memoriaLibreCortada = a.replace(".", "");
             memoriaTotalCortada = b.replace(".", "");
-            System.out.println("Memoria libre cortada sin el punto: " + memoriaLibreCortada);
-            System.out.println("Memoria total cortada sin el punto: " + memoriaTotalCortada);
+            System.out.println("Memoria libre cortada sin el punto:" + memoriaLibreCortada);
+            System.out.println("Memoria total cortada sin el punto:" + memoriaTotalCortada);
 
             //Esto quita los espacios que hayan al principio o al final
             memoriaLibreCortada.trim();
@@ -136,7 +143,7 @@ public class ObtenerMemoria extends Thread {
             System.out.println("La memoria total es: " + memoriaRamTotal);
 
             //Toma la memoria total del sistema y le resta la memoria libre, para obtener la memoria utilizada
-            int memoriaRamUtilizada = memoriaRamTotal - memoriaRamLibre;
+            memoriaRamUtilizada = memoriaRamTotal - memoriaRamLibre;
             System.out.println("La memoria utilizada es: " + memoriaRamUtilizada + " MB");
             archivo.close();
             pintar.run(memoriaRamUtilizada);
@@ -147,6 +154,8 @@ public class ObtenerMemoria extends Thread {
             System.out.println("Error gg");
         }
 
-    }
+    }//Fin leer
+
+    
 
 }

@@ -9,6 +9,13 @@ import java.io.IOException;
 import java.util.Random;
 import java.util.Timer;
 import java.util.TimerTask;
+import javax.swing.JFrame;
+import org.jfree.chart.ChartFactory;
+import org.jfree.chart.ChartPanel;
+import org.jfree.chart.JFreeChart;
+import org.jfree.chart.plot.PlotOrientation;
+import org.jfree.data.xy.XYSeries;
+import org.jfree.data.xy.XYSeriesCollection;
 
 /**
  *
@@ -17,22 +24,27 @@ import java.util.TimerTask;
 public class Pintar extends Thread {
 
     int valor;
+    int valorEnX = 1000;
     int[][] v = new int[10][3];
     Random random = new Random();
 
+    NewMain ventana = new NewMain();
 //-----------------------------------------------------------------------------------------------
+
     public void run(int valorMemoriaRam) {
         try {
             asignaValoresX();
 
             valor = random.nextInt(11);
-            
+
             System.out.println("Valor: " + valorMemoriaRam);
             moverValores();
             v[0][0] = valorMemoriaRam;
-            v[0][1] = 500 - (valorMemoriaRam * 50);//Valor de Y, 500 y 50 dependen de los pixeles
-            v[0][2] = 1000; //Valor de X
+            v[0][1] = (valorMemoriaRam);//Valor de Y, 500 y 50 dependen de los pixeles
+            v[0][2] = valorEnX; //Valor de X
             mostrarVector();
+
+            dibujarGrafica();
 
         } catch (Exception e) {
             System.out.println("Error gg: " + e);
@@ -49,8 +61,35 @@ public class Pintar extends Thread {
 //        }
 //
 //    };
+//-----------------------------------------------------------------------------------------------
 
-    
+    public void dibujarGrafica() {
+        XYSeries linea = new XYSeries("Ram");
+        linea.add(v[0][2], v[0][1]);
+        linea.add(v[1][2], v[1][1]);
+        linea.add(v[2][2], v[2][1]);
+        linea.add(v[3][2], v[3][1]);
+        linea.add(v[4][2], v[4][1]);
+        linea.add(v[5][2], v[5][1]);
+        linea.add(v[6][2], v[6][1]);
+        linea.add(v[7][2], v[7][1]);
+        linea.add(v[8][2], v[8][1]);
+        linea.add(v[9][2], v[9][1]);
+
+        XYSeriesCollection dataset2 = new XYSeriesCollection();
+        dataset2.addSeries(linea);
+
+        JFreeChart graficaLinea = ChartFactory.createXYLineChart("Memoria Ram", "Posicion X", "Posicion Y", dataset2, PlotOrientation.VERTICAL, true, true, false);
+        ChartPanel panel2 = new ChartPanel(graficaLinea);
+
+//        JFrame ventana2 = new JFrame();
+//        ventana2.setVisible(true);
+//        ventana2.setSize(600, 800);
+        ventana.ventana2.remove(panel2);
+        ventana.ventana2.add(panel2);
+        ventana.ventana2.setVisible(true);
+    }
+
 //-----------------------------------------------------------------------------------------------
     private void moverValores() {
         for (int i = 9; i > 0; i--) {
@@ -62,7 +101,7 @@ public class Pintar extends Thread {
 
     private void asignaValoresX() {
         for (int i = 0; i <= 9; i++) {
-            v[i][2] = 1100 - (i * 100);
+            v[i][2] = valorEnX - (i * 100);
         }
     }
 
@@ -75,5 +114,6 @@ public class Pintar extends Thread {
         }
         System.out.println("//---------------------------------------------------------------------------------------");
     }
+
 //-----------------------------------------------------------------------------------------------
 }
