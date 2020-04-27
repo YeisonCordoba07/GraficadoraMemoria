@@ -99,6 +99,7 @@ public class Graficadora extends javax.swing.JFrame {
         ventana.setVisible(true);
         ventana.setSize(600, 800);
         ventana.add(panel);
+        
 //Grafica con cordenadas--------------------------------------------------------------------------------------------------------
         XYSeries linea = new XYSeries("Ram");
         linea.add(1, 5);
