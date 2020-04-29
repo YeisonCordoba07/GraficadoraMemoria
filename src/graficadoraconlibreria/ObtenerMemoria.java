@@ -19,6 +19,7 @@ public class ObtenerMemoria extends Thread {
 
     int memoriaRamUtilizada;
     Pintar pintar = new Pintar();
+
     @Override
     public void run() {
         try {
@@ -27,7 +28,7 @@ public class ObtenerMemoria extends Thread {
             System.out.println("Error gg: " + e);
         }
     }
-    
+
     Timer timer = new Timer();
     TimerTask tarea = new TimerTask() {
 
@@ -39,8 +40,6 @@ public class ObtenerMemoria extends Thread {
 
     };
 
-    
-    
     //--------------------------------------------------------------------------------------------------------------------
     public void leer() {
 
@@ -77,9 +76,9 @@ public class ObtenerMemoria extends Thread {
                 memoriaTotalString += memoriaChar;
             }
 
-            System.out.println("Memoria Libre Completa Inicio:" + memoriaLibreString + ":Memoria Libre Completa Final");
+            System.out.println("Memoria Libre Completa Inicio:\n" + memoriaLibreString + ":Memoria Libre Completa Final");
             System.out.println("");
-            System.out.println("Memoria total Completa Inicio:" + memoriaTotalString + "Memoria total Completa Final");
+            System.out.println("Memoria total Completa Inicio:\n" + memoriaTotalString + "Memoria total Completa Final");
             System.out.println("");
 
             //Guarda la el valor de la memoria libre en 'memoriaLibreCortada', para ello saca ese valor como una subcadena
@@ -87,10 +86,16 @@ public class ObtenerMemoria extends Thread {
 //            String memoriaLibreCortada = memoriaLibreString.substring(149, 158);
 //            String memoriaTotalCortada = memoriaTotalString.substring(149, 158);
 //            String memoriaLibreCortada = memoriaLibreString.substring(201, 210);
-//            String memoriaTotalCortada = memoriaTotalString.substring(201, 210);
-            String memoriaLibreCortada = memoriaLibreString.substring(199, 208);
-            String memoriaTotalCortada = memoriaTotalString.substring(199, 208);
-            
+//            String memoriaTotalCortada = memoriaTotalString.substring(201, 210);  
+            String memoriaLibreCortada = "";
+            String memoriaTotalCortada = "";
+
+            try {
+                memoriaLibreCortada = memoriaLibreString.substring(199, 208);
+                memoriaTotalCortada = memoriaTotalString.substring(199, 208);
+            } catch (IndexOutOfBoundsException e) {
+                System.out.println("Error al cortar: " + e);
+            }
 
             System.out.println("INICIO MEMORIA LIBRE CORTE:" + memoriaLibreCortada + ":FIN CORTE");
             System.out.println("");
@@ -136,8 +141,14 @@ public class ObtenerMemoria extends Thread {
 
             /*AQUÍ HAY UN ERROR DE JAVA, NO CONVIERTE CORRECTAMENTE APESAR DE QUE ESTÁ BIEN*/
             //Convierte el valor de la subcadena que tiene la memoria libre a int
-            int memoriaRamLibre = Integer.parseInt(memoriaLibreCortada);
-            int memoriaRamTotal = Integer.parseInt(memoriaTotalCortada);
+            int memoriaRamLibre = 0;
+            int memoriaRamTotal = 0;
+            try {
+                memoriaRamLibre = Integer.parseInt(memoriaLibreCortada);
+                memoriaRamTotal = Integer.parseInt(memoriaTotalCortada);
+            } catch (NumberFormatException e) {
+                System.out.println("Error al convertir: " + e);
+            }
 
             System.out.println("La memoria libre es: " + memoriaRamLibre);
             System.out.println("La memoria total es: " + memoriaRamTotal);
@@ -146,8 +157,9 @@ public class ObtenerMemoria extends Thread {
             memoriaRamUtilizada = memoriaRamTotal - memoriaRamLibre;
             System.out.println("La memoria utilizada es: " + memoriaRamUtilizada + " MB");
             archivo.close();
+
+            //Cuando el programa falla, la grafica cae hasta 0, se puede evitar
             pintar.run(memoriaRamUtilizada);
-            
 
         } catch (IOException e) {
             // TODO Auto-generated catch block
@@ -155,7 +167,5 @@ public class ObtenerMemoria extends Thread {
         }
 
     }//Fin leer
-
-    
 
 }
