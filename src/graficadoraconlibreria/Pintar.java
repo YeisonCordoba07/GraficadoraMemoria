@@ -5,6 +5,8 @@
  */
 package graficadoraconlibreria;
 
+import java.awt.Color;
+import java.awt.Graphics;
 import java.io.IOException;
 import java.util.Random;
 import java.util.Timer;
@@ -40,11 +42,12 @@ public class Pintar extends Thread {
             System.out.println("Valor: " + valorMemoriaRam);
             moverValores();
             v[0][0] = valorMemoriaRam;
-            v[0][1] = (valorMemoriaRam);//Valor de Y, 500 y 50 dependen de los pixeles
+            v[0][1] = (valorMemoriaRam/6);//Valor de Y, 500 y 50 dependen de los pixeles
             //v[0][2] = valorEnX; //Valor de X
             mostrarVector();
 
-            dibujarGrafica();
+            //dibujarGrafica();
+            dibujarLinea();
 
         } catch (Exception e) {
             System.out.println("Error gg: " + e);
@@ -62,7 +65,16 @@ public class Pintar extends Thread {
 //
 //    };
 //-----------------------------------------------------------------------------------------------
-
+public void dibujarLinea(){
+    Graphics g = ventana.ventana2.getGraphics();
+    
+    
+    g.setColor(Color.red);
+    for(int i = 1; i <= 8; i++){
+        g.drawLine(v[i][2], v[i][1], v[i-1][2], v[i-1][1]);
+    }
+    
+}
     public void dibujarGrafica() {
         XYSeries linea = new XYSeries("Ram");
         linea.add(v[0][2], v[0][1]);
