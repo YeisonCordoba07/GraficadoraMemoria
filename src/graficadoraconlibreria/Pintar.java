@@ -68,11 +68,33 @@ public class Pintar extends Thread {
 public void dibujarLinea(){
     Graphics g = ventana.ventana2.getGraphics();
     
-    
-    g.setColor(Color.red);
-    for(int i = 1; i <= 8; i++){
-        g.drawLine(v[i][2], v[i][1], v[i-1][2], v[i-1][1]);
+    int r = random.nextInt(6);
+    switch (r){
+        case 1:
+            g.setColor(Color.red);
+            break;
+        case 2:
+            g.setColor(Color.blue);
+            
+            break;
+        case 4:
+            g.setColor(Color.green);
+            break;
+        case 3:
+            g.setColor(Color.black);
+            break;
+        case 5:
+            g.setColor(Color.orange);
+            break;
+        default:
+            break;
     }
+    
+    for(int i = 9; i >= 1; i--){
+        g.drawLine(v[i][2], v[i][1], v[i-1][2], v[i-1][1]);
+        g.drawRect(v[i][2], v[i][1], 4, 4);
+    }
+    ventana.ventana2.setVisible(true);
     
 }
     public void dibujarGrafica() {

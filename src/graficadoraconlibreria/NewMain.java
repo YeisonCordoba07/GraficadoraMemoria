@@ -23,8 +23,8 @@ public class NewMain {
     /**
      * @param args the command line arguments
      */
-            public static  JFrame ventana2 = new JFrame();
-            
+    public static JFrame ventana2 = new JFrame();
+
     public static void main(String[] args) {
         // TODO code application logic here
 
@@ -65,7 +65,6 @@ public class NewMain {
 //        ventana2.setVisible(true);
 //        ventana2.setSize(600, 800);
 //        ventana2.add(panel2);
-
         ventana2.setVisible(true);
         ventana2.setSize(600, 800);
         EjecutarScript ejecutarScript = new EjecutarScript();
