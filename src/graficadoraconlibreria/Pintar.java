@@ -92,7 +92,7 @@ public void dibujarLinea(){
     
     for(int i = 9; i >= 1; i--){
         g.drawLine(v[i][2], v[i][1], v[i-1][2], v[i-1][1]);
-        g.drawRect(v[i][2], v[i][1], 4, 4);
+        g.drawRect(v[i][2], v[i][1], 5, 5);
     }
     ventana.ventana2.setVisible(true);
     
