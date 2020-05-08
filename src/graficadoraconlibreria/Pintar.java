@@ -27,7 +27,7 @@ public class Pintar extends Thread {
 
     int valor;
     int valorEnX = 1000;
-    int[][] v = new int[10][3];
+    static int[][] v = new int[10][3];
     Random random = new Random();
 
     NewMain ventana = new NewMain();
@@ -42,13 +42,13 @@ public class Pintar extends Thread {
             System.out.println("Valor: " + valorMemoriaRam);
             moverValores();
             v[0][0] = valorMemoriaRam;
-            v[0][1] = 800-(valorMemoriaRam/5);//Valor de Y, 500 y 50 dependen de los pixeles
+            v[0][1] = 800 - (valorMemoriaRam / 5);//Valor de Y, 500 y 50 dependen de los pixeles
             //v[0][2] = valorEnX; //Valor de X
             mostrarVector();
 
             //dibujarGrafica();
-            dibujarLinea();
-
+            //dibujarLinea();
+            //Graficadora.panel.repaint();
         } catch (Exception e) {
             System.out.println("Error gg: " + e);
         }
@@ -65,38 +65,40 @@ public class Pintar extends Thread {
 //
 //    };
 //-----------------------------------------------------------------------------------------------
-public void dibujarLinea(){
-    Graphics g = Graficadora.panel.getGraphics();
-    
-    int r = random.nextInt(6);
-    switch (r){
-        case 1:
-            g.setColor(Color.red);
-            break;
-        case 2:
-            g.setColor(Color.blue);
-            
-            break;
-        case 4:
-            g.setColor(Color.green);
-            break;
-        case 3:
-            g.setColor(Color.black);
-            break;
-        case 5:
-            g.setColor(Color.orange);
-            break;
-        default:
-            break;
+
+    public void dibujarLinea() {
+        Graphics g = Graficadora.panel.getGraphics();
+        Graficadora.panel.repaint();
+
+        int r = random.nextInt(6);
+        switch (r) {
+            case 1:
+                g.setColor(Color.red);
+                break;
+            case 2:
+                g.setColor(Color.blue);
+
+                break;
+            case 4:
+                g.setColor(Color.green);
+                break;
+            case 3:
+                g.setColor(Color.black);
+                break;
+            case 5:
+                g.setColor(Color.orange);
+                break;
+            default:
+                break;
+        }
+
+//        for (int i = 9; i >= 1; i--) {
+//            g.drawLine(v[i][2], v[i][1], v[i - 1][2], v[i - 1][1]);
+//            g.drawRect(v[i][2], v[i][1], 5, 5);
+//        }
+        //ventana.ventana2.setVisible(true);
     }
-    
-    for(int i = 9; i >= 1; i--){
-        g.drawLine(v[i][2], v[i][1], v[i-1][2], v[i-1][1]);
-        g.drawRect(v[i][2], v[i][1], 5, 5);
-    }
-    //ventana.ventana2.setVisible(true);
-    
-}
+
     public void dibujarGrafica(Graphics g) {
 
         XYSeries linea = new XYSeries("Ram");
@@ -125,8 +127,6 @@ public void dibujarLinea(){
         ventana.ventana2.add(panel2);
         ventana.ventana2.setVisible(true);
     }
-    
-
 
 //-----------------------------------------------------------------------------------------------
     private void moverValores() {
@@ -154,4 +154,7 @@ public void dibujarLinea(){
     }
 
 //-----------------------------------------------------------------------------------------------
+    public int[][] retornaVector() {
+        return v;
+    }
 }

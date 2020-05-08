@@ -37,9 +37,9 @@ public class Graficadora extends javax.swing.JFrame {
         initComponents();
 
         panel.setVisible(true);
-        panel.setSize(900, 900);
+        panel.setSize(1100, 900);
         this.setBackground(Color.yellow);
-        panel.setBackground(Color.blue);
+        //panel.setBackground(Color.blue);
         this.setSize(1000, 1000);
         this.add(panel);
 
@@ -88,7 +88,7 @@ public class Graficadora extends javax.swing.JFrame {
 
         ejecutarScript.run();
         memoria.run();
-        repaint();
+        //repaint();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     public static void main(String args[]) {
@@ -177,6 +177,18 @@ public class Graficadora extends javax.swing.JFrame {
 
     public void paint(Graphics g) {
         super.paint(g);
+        
+        repaint();
+        Pintar pintar = new Pintar();
+        //pintar.dibujarLinea();
+        int[][] v = pintar.retornaVector();
+        //repaint();
+        for (int i = 9; i >= 1; i--) {
+            g.drawLine(v[i][2], v[i][1], v[i - 1][2], v[i - 1][1]);
+            g.drawRect(v[i][2], v[i][1], 5, 5);
+        }
+
+
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
