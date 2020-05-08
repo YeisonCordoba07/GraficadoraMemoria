@@ -37,9 +37,9 @@ public class Graficadora extends javax.swing.JFrame {
         initComponents();
 
         panel.setVisible(true);
-        panel.setSize(900, 900);
+        panel.setSize(1100, 900);
         this.setBackground(Color.yellow);
-        panel.setBackground(Color.blue);
+        //panel.setBackground(Color.blue);
         this.setSize(1000, 1000);
         this.add(panel);
 

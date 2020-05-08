@@ -67,7 +67,7 @@ public class Pintar extends Thread {
 //-----------------------------------------------------------------------------------------------
 public void dibujarLinea(){
     Graphics g = Graficadora.panel.getGraphics();
-    
+    Graficadora.panel.repaint();
     int r = random.nextInt(6);
     switch (r){
         case 1:
