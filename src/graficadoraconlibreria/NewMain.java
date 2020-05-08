@@ -5,7 +5,10 @@
  */
 package graficadoraconlibreria;
 
+import java.awt.Color;
+import java.awt.Graphics;
 import javax.swing.JFrame;
+import javax.swing.JPanel;
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartPanel;
 import org.jfree.chart.JFreeChart;
@@ -24,6 +27,7 @@ public class NewMain {
      * @param args the command line arguments
      */
     public static JFrame ventana2 = new JFrame();
+    public static JPanel panel2 = new JPanel();
 
     public static void main(String[] args) {
         // TODO code application logic here
@@ -67,6 +71,10 @@ public class NewMain {
 //        ventana2.add(panel2);
         ventana2.setVisible(true);
         ventana2.setSize(600, 800);
+        panel2.setVisible(true);
+        panel2.setSize(600, 800);
+        // panel2.setBackground(Color.BLUE);
+        ventana2.add(panel2);
         EjecutarScript ejecutarScript = new EjecutarScript();
 
         ObtenerMemoria memoria = new ObtenerMemoria();
@@ -79,5 +87,9 @@ public class NewMain {
 //        Pintar pintar = new Pintar();
 //        pintar.run();
     }
+
+//    public void paint(Graphics g) {
+//        super.paint(g);
+//    }
 
 }

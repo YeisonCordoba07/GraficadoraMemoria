@@ -42,7 +42,7 @@ public class Pintar extends Thread {
             System.out.println("Valor: " + valorMemoriaRam);
             moverValores();
             v[0][0] = valorMemoriaRam;
-            v[0][1] = (valorMemoriaRam/6);//Valor de Y, 500 y 50 dependen de los pixeles
+            v[0][1] = 800-(valorMemoriaRam/5);//Valor de Y, 500 y 50 dependen de los pixeles
             //v[0][2] = valorEnX; //Valor de X
             mostrarVector();
 
@@ -66,7 +66,7 @@ public class Pintar extends Thread {
 //    };
 //-----------------------------------------------------------------------------------------------
 public void dibujarLinea(){
-    Graphics g = ventana.ventana2.getGraphics();
+    Graphics g = Graficadora.panel.getGraphics();
     
     int r = random.nextInt(6);
     switch (r){
@@ -94,10 +94,11 @@ public void dibujarLinea(){
         g.drawLine(v[i][2], v[i][1], v[i-1][2], v[i-1][1]);
         g.drawRect(v[i][2], v[i][1], 5, 5);
     }
-    ventana.ventana2.setVisible(true);
+    //ventana.ventana2.setVisible(true);
     
 }
-    public void dibujarGrafica() {
+    public void dibujarGrafica(Graphics g) {
+
         XYSeries linea = new XYSeries("Ram");
         linea.add(v[0][2], v[0][1]);
         linea.add(v[1][2], v[1][1]);
@@ -119,10 +120,13 @@ public void dibujarLinea(){
 //        JFrame ventana2 = new JFrame();
 //        ventana2.setVisible(true);
 //        ventana2.setSize(600, 800);
+        //repaint();
         ventana.ventana2.remove(panel2);
         ventana.ventana2.add(panel2);
         ventana.ventana2.setVisible(true);
     }
+    
+
 
 //-----------------------------------------------------------------------------------------------
     private void moverValores() {
