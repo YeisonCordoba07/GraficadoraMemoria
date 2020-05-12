@@ -37,10 +37,10 @@ public class Graficadora extends javax.swing.JFrame {
         initComponents();
 
         panel.setVisible(true);
-        panel.setSize(1100, 900);
+        panel.setSize(1200, 900);
         this.setBackground(Color.yellow);
         //panel.setBackground(Color.blue);
-        this.setSize(1000, 1000);
+        this.setSize(1500, 1000);
         this.add(panel);
 
     }
@@ -52,6 +52,11 @@ public class Graficadora extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseMoved(java.awt.event.MouseEvent evt) {
+                formMouseMoved(evt);
+            }
+        });
 
         jButton1.setText("jButton1");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -90,6 +95,11 @@ public class Graficadora extends javax.swing.JFrame {
         memoria.run();
         //repaint();
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void formMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseMoved
+        // TODO add your handling code here:
+        repaint();
+    }//GEN-LAST:event_formMouseMoved
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -178,7 +188,7 @@ public class Graficadora extends javax.swing.JFrame {
     public void paint(Graphics g) {
         super.paint(g);
         
-        repaint();
+        //repaint();
         Pintar pintar = new Pintar();
         //pintar.dibujarLinea();
         int[][] v = pintar.retornaVector();
@@ -187,6 +197,9 @@ public class Graficadora extends javax.swing.JFrame {
             g.drawLine(v[i][2], v[i][1], v[i - 1][2], v[i - 1][1]);
             g.drawRect(v[i][2], v[i][1], 5, 5);
         }
+        g.setColor(Color.red);
+        g.drawRect(10, 10, 1000, 800);
+        repaint();
 
 
     }
