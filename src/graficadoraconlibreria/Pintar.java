@@ -38,12 +38,18 @@ public class Pintar extends Thread {
             asignaValoresX();
 
             valor = random.nextInt(11);
+            if (valorMemoriaRam <= 0) {
+                v[0][0] = v[1][0];
+                v[0][1] = v[1][1];
+                System.out.println("###################################");
+            } else {
+                System.out.println("Valor: " + valorMemoriaRam);
+                moverValores();
+                v[0][0] = valorMemoriaRam;
+                v[0][1] = 800 - (valorMemoriaRam / 10);//Valor de Y, 500 y 50 dependen de los pixeles
+                //v[0][2] = valorEnX; //Valor de X
+            }
 
-            System.out.println("Valor: " + valorMemoriaRam);
-            moverValores();
-            v[0][0] = valorMemoriaRam;
-            v[0][1] = 800 - (valorMemoriaRam / 5);//Valor de Y, 500 y 50 dependen de los pixeles
-            //v[0][2] = valorEnX; //Valor de X
             mostrarVector();
 
             //dibujarGrafica();
