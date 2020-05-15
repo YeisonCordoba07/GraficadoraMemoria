@@ -48,7 +48,7 @@ public class Pintar extends Thread {
                 System.out.println("Valor: " + valorMemoriaRam);
                 moverValores();
                 v[0][0] = valorMemoriaRam;
-                v[0][1] = 800 - (valorMemoriaRam / 10);//Valor de Y, 500 y 50 dependen de los pixeles
+                v[0][1] = (800 - (valorMemoriaRam / 10))/2;//Valor de Y, 500 y 50 dependen de los pixeles
                 //v[0][2] = valorEnX; //Valor de X
             //}
 
