@@ -26,7 +26,7 @@ import org.jfree.data.xy.XYSeriesCollection;
 public class Pintar extends Thread {
 
     int valor;
-    int valorEnX = 1000;
+    int valorEnX = 500;
     static int[][] v = new int[10][3];
     Random random = new Random();
 
@@ -38,17 +38,19 @@ public class Pintar extends Thread {
             asignaValoresX();
 
             valor = random.nextInt(11);
-            if (valorMemoriaRam <= 0) {
-                v[0][0] = v[1][0];
-                v[0][1] = v[1][1];
-                System.out.println("###################################");
-            } else {
+            //Si la memoria ram es menor que 0, no la grafica, sino 
+            //que duplica la ultima que haya en el vector
+//            if (valorMemoriaRam <= 0) {
+//                v[0][0] = v[1][0];
+//                v[0][1] = v[1][1];
+//                System.out.println("###################################");
+//            } else {
                 System.out.println("Valor: " + valorMemoriaRam);
                 moverValores();
                 v[0][0] = valorMemoriaRam;
-                v[0][1] = 800 - (valorMemoriaRam / 10);//Valor de Y, 500 y 50 dependen de los pixeles
+                v[0][1] = (800 - (valorMemoriaRam / 10))/2;//Valor de Y, 500 y 50 dependen de los pixeles
                 //v[0][2] = valorEnX; //Valor de X
-            }
+            //}
 
             mostrarVector();
 
@@ -145,7 +147,7 @@ public class Pintar extends Thread {
 
     private void asignaValoresX() {
         for (int i = 0; i <= 9; i++) {
-            v[i][2] = valorEnX - (i * 100);
+            v[i][2] = valorEnX - (i * 50);
         }
     }
 
