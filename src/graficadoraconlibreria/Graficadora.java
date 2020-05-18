@@ -46,6 +46,7 @@ public class Graficadora extends javax.swing.JFrame {
         panel.setBackground(Color.darkGray);
         this.setSize(1500, 1000);
         this.add(panel);
+        this.setVisible(false);
 
         //Labels que mostrarán los segundos en la parte de abajo de la grafica
         labeles[0] = jLabel1;
@@ -59,7 +60,6 @@ public class Graficadora extends javax.swing.JFrame {
         labeles[8] = jLabel9;
         labeles[9] = jLabel10;
 
-        
         //Les da la posicion y el texto a los Labels
         for (int i = 0; i < 10; i++) {
 
@@ -193,6 +193,8 @@ public class Graficadora extends javax.swing.JFrame {
 
         ejecutarScript.run();
         memoria.run();
+
+        //this.add(clasePanel);
         //repaint();
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -233,6 +235,26 @@ public class Graficadora extends javax.swing.JFrame {
                 new Graficadora().setVisible(true);
             }
         });
+
+//        JFrame from = new JFrame();
+//        from.setVisible(true);
+//        from.setSize(800, 800);
+//
+        ClasePanel clasePanel = new ClasePanel();
+//        clasePanel.setVisible(true);
+//        clasePanel.setSize(500, 500);
+//
+//        from.add(clasePanel);
+        //JFrame.setDefaultLookAndFeelDecorated(true);
+        JFrame ventana = new JFrame("Plano Cartesiano");
+        ventana.setVisible(true);
+        clasePanel.setVisible(true);
+        //ventana.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        ventana.setSize(800, 840);
+
+        ventana.add(clasePanel);
+        //ventana.setVisible(true);
+
 //**************************************************************************************************************************
 ////Grafica con String--------------------------------------------------------------------------------------------------------
 //        DefaultCategoryDataset dataset = new DefaultCategoryDataset();
@@ -273,7 +295,6 @@ public class Graficadora extends javax.swing.JFrame {
 //        ventana2.setSize(600, 800);
 //        ventana2.add(panel2);
 //**************************************************************************************************************************
-
 //--------------------------------------------------------------------------------------------------------
 //        EjecutarScript ejecutarScript = new EjecutarScript();
 //        ejecutarScript.run();
@@ -294,14 +315,13 @@ public class Graficadora extends javax.swing.JFrame {
         pintarTablero(g);
         int[][] v = pintar.retornaVector();
 
-        
         //Pinta la ram del sistema
-                g.setColor(Color.red);
+        g.setColor(Color.red);
         for (int i = 9; i >= 1; i--) {
             g.drawLine(v[i][2], v[i][1], v[i - 1][2], v[i - 1][1]);
             g.drawRect(v[i][2], v[i][1], 5, 5);
-        }
 
+        }
         repaint();
 
     }
@@ -311,6 +331,7 @@ public class Graficadora extends javax.swing.JFrame {
         for (int i = 0; i < 10; i++) {
             g.setColor(Color.gray);
             g.drawRect(500 - (i * 50), 0, 500 - (i * 50), 500);
+            g.drawLine(0, i * 50, 500, i * 50);
         }
     }
 
