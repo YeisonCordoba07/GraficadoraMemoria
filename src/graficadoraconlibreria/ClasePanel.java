@@ -26,7 +26,13 @@ public class ClasePanel extends JPanel {
 //            g.drawLine(500 - (i * 50), 0, 500 - (i * 50), 400);
 //            g.drawLine(0, i * 50, 500, i * 50);
 //        }
-        g.drawLine(0, 500, 500, 500);
+
+        for (int i = 0; i < 10; i++) {
+            g.setColor(Color.gray);
+            g.drawLine(i*50+50,500 ,i*50 +50, 495);
+            g.drawLine(i*50+50,500 ,i*50 +50, 505);
+        }
+        g.drawLine(50, 500, 500, 500);
         g.drawLine(500, 500, 500, 0);
 
         //pintarTablero(g);

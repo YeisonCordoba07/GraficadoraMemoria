@@ -36,6 +36,7 @@ public class MainGrafica {
         
         jframe.setSize(800, 840);
         jframe.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        //jframe.setLayout(new BorderLayout());
         
         jframe.add(clasePanel);
         jframe.getContentPane().setBackground(Color.MAGENTA);
