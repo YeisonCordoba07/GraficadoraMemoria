@@ -34,6 +34,7 @@ public class EjecutarScript extends Thread {
             try {
                 //Ejecuta el script que guarda la memoria Ram en un txt
                 ProcessBuilder p = new ProcessBuilder();
+                //Se puede crear una variable para el nombre del usuario
                 String link = "C:\\Users\\nanop\\Downloads\\MemoriaRam.ps1";
                 p.command("cmd.exe", "/c", link);
                 p.start();

@@ -311,6 +311,7 @@ public class Graficadora extends javax.swing.JFrame {
         for (int i = 0; i < 10; i++) {
             g.setColor(Color.gray);
             g.drawRect(500 - (i * 50), 0, 500 - (i * 50), 500);
+            g.drawLine(0, i * 50, 500, i * 50);
         }
     }
 
