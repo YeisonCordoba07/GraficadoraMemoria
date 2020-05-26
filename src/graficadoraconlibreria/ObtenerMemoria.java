@@ -17,32 +17,30 @@ import java.util.TimerTask;
  */
 public class ObtenerMemoria extends Thread {
 
-    int memoriaRamUtilizada;
-    Pintar pintar = new Pintar();
-
-    @Override
-    public void run() {
-        try {
-            timer.scheduleAtFixedRate(tarea, 2000, 4000);
-        } catch (Exception e) {
-            System.out.println("Error gg: " + e);
-        }
-    }
-
-    Timer timer = new Timer();
-    TimerTask tarea = new TimerTask() {
-
-        //Proceso que se va a ejecutar cada cierto tiempo
-        @Override
-        public void run() {
-            leer();
-        }
-
-    };
-
+//    @Override
+//    public void run() {
+//        try {
+//            timer.scheduleAtFixedRate(tarea, 2000, 4000);
+//        } catch (Exception e) {
+//            System.out.println("Error gg: " + e);
+//        }
+//    }
+//
+//    Timer timer = new Timer();
+//    TimerTask tarea = new TimerTask() {
+//
+//        //Proceso que se va a ejecutar cada cierto tiempo
+//        @Override
+//        public void run() {
+//            leer();
+//        }
+//
+//    };
     //--------------------------------------------------------------------------------------------------------------------
     public void leer() {
-
+        int memoriaRamUtilizada;
+        Pintar pintar = new Pintar();
+        
         String memoriaLibreString = "";
         String memoriaTotalString = "";
 

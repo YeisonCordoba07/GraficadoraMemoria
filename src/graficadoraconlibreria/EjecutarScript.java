@@ -18,7 +18,7 @@ public class EjecutarScript extends Thread {
     @Override
     public void run() {
         try {
-            timer.scheduleAtFixedRate(tarea, 0, 4000);
+            timer.scheduleAtFixedRate(tarea, 1000, 3000);
 
         } catch (Exception e) {
             System.out.println("Error gg: " + e);
@@ -38,6 +38,8 @@ public class EjecutarScript extends Thread {
                 String link = "C:\\Users\\nanop\\Downloads\\MemoriaRam.ps1";
                 p.command("cmd.exe", "/c", link);
                 p.start();
+                ObtenerMemoria obtenerMemoria = new ObtenerMemoria();
+                obtenerMemoria.leer();
 
             } catch (IOException e) {
                 e.printStackTrace();

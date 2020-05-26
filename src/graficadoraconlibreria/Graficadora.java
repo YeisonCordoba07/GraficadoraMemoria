@@ -59,7 +59,6 @@ public class Graficadora extends javax.swing.JFrame {
         labeles[8] = jLabel9;
         labeles[9] = jLabel10;
 
-        
         //Les da la posicion y el texto a los Labels
         for (int i = 0; i < 10; i++) {
 
@@ -294,9 +293,8 @@ public class Graficadora extends javax.swing.JFrame {
         pintarTablero(g);
         int[][] v = pintar.retornaVector();
 
-        
         //Pinta la ram del sistema
-                g.setColor(Color.red);
+        g.setColor(Color.red);
         for (int i = 9; i >= 1; i--) {
             g.drawLine(v[i][2], v[i][1], v[i - 1][2], v[i - 1][1]);
             g.drawRect(v[i][2], v[i][1], 5, 5);

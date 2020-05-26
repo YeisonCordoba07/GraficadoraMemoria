@@ -32,7 +32,7 @@ public class MainGrafica {
             EjecutarScript ejecutar = new EjecutarScript();
             ObtenerMemoria memoria = new ObtenerMemoria();
             ejecutar.run();
-            memoria.run();
+            //memoria.run();
             System.out.println("Boton ss");
         }
     };
