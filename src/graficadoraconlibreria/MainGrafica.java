@@ -24,9 +24,10 @@ public class MainGrafica {
      * @param args the command line arguments
      */
     static JButton botonIniciar = new JButton("Iniciar");
+        static JButton botonColor = new JButton("Cambiar Grafica");
     
     //
-    static ActionListener actionEvent2 = new ActionListener() {
+    static ActionListener actionEvent = new ActionListener() {
         @Override
         public void actionPerformed(ActionEvent e) {
             EjecutarScript ejecutar = new EjecutarScript();
@@ -36,12 +37,22 @@ public class MainGrafica {
             System.out.println("Boton ss");
         }
     };
+        static ActionListener actionEvent2 = new ActionListener() {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            ClasePanel.cuadricula = !ClasePanel.cuadricula;
+            System.out.println("Boton ss2");
+        }
+    };
+    
     
 
     public static void main(String[] args) {
         ClasePanel clasePanel = new ClasePanel();
         botonIniciar.setVisible(true);
-        botonIniciar.addActionListener(actionEvent2);
+        botonIniciar.addActionListener(actionEvent);
+        botonColor.setVisible(true);
+        botonColor.addActionListener(actionEvent2);
 
         JFrame jframe = new JFrame("Plano Cartesiano");
 
@@ -58,6 +69,7 @@ public class MainGrafica {
         jframe.add(clasePanel);
         jframe.getContentPane().setBackground(Color.MAGENTA);
         jframe.add(botonIniciar, BorderLayout.EAST);
+        jframe.add(botonColor, BorderLayout.SOUTH);
         //clasePanel.setBackground(Color.CYAN);
 
     }
