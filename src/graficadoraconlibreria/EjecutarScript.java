@@ -18,7 +18,7 @@ public class EjecutarScript extends Thread {
     @Override
     public void run() {
         try {
-            timer.scheduleAtFixedRate(tarea, 1000, 4000);
+            timer.scheduleAtFixedRate(tarea, 1000, 2000);
 
         } catch (Exception e) {
             System.out.println("Error gg: " + e);

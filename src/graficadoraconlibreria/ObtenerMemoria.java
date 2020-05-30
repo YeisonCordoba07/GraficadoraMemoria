@@ -15,7 +15,7 @@ import java.util.TimerTask;
  *
  * @author YEISON
  */
-public class ObtenerMemoria extends Thread {
+public class ObtenerMemoria{
 
 //    @Override
 //    public void run() {

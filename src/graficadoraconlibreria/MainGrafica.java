@@ -24,28 +24,30 @@ public class MainGrafica {
      * @param args the command line arguments
      */
     static JButton botonIniciar = new JButton("Iniciar");
-        static JButton botonColor = new JButton("Cambiar Grafica");
-    
-    //
+    static JButton botonColor = new JButton("Cambiar Grafica");
+
+    //Evento para que al dar click empiece a graficar
     static ActionListener actionEvent = new ActionListener() {
         @Override
         public void actionPerformed(ActionEvent e) {
+            Pintar pintar = new Pintar();
+            pintar.asignaValoresY();
             EjecutarScript ejecutar = new EjecutarScript();
             ObtenerMemoria memoria = new ObtenerMemoria();
             ejecutar.run();
             //memoria.run();
-            System.out.println("Boton ss");
+            System.out.println("Boton Iniciar");
         }
     };
-        static ActionListener actionEvent2 = new ActionListener() {
+    
+    //Evento para que se cambien las graficas
+    static ActionListener actionEvent2 = new ActionListener() {
         @Override
         public void actionPerformed(ActionEvent e) {
             ClasePanel.cuadricula = !ClasePanel.cuadricula;
-            System.out.println("Boton ss2");
+            System.out.println("Boton Cambiar Colores");
         }
     };
-    
-    
 
     public static void main(String[] args) {
         ClasePanel clasePanel = new ClasePanel();

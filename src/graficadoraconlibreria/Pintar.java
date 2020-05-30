@@ -23,7 +23,7 @@ import org.jfree.data.xy.XYSeriesCollection;
  *
  * @author YEISON
  */
-public class Pintar extends Thread {
+public class Pintar {
 
     int valor;
     int valorEnX = 500;
@@ -45,11 +45,11 @@ public class Pintar extends Thread {
 //                v[0][1] = v[1][1];
 //                System.out.println("###################################");
 //            } else {
-                System.out.println("Valor: " + valorMemoriaRam);
-                moverValores();
-                v[0][0] = valorMemoriaRam;
-                v[0][1] = (800 - (valorMemoriaRam / 10))/2;//Valor de Y, 500 y 50 dependen de los pixeles
-                //v[0][2] = valorEnX; //Valor de X
+            System.out.println("Valor: " + valorMemoriaRam);
+            moverValores();
+            v[0][0] = valorMemoriaRam;
+            v[0][1] = (800 - (valorMemoriaRam / 10)) / 2 + 50;//Valor de Y, 500 y 50 dependen de los pixeles
+            //v[0][2] = valorEnX; //Valor de X
             //}
 
             mostrarVector();
@@ -148,6 +148,12 @@ public class Pintar extends Thread {
     private void asignaValoresX() {
         for (int i = 0; i <= 9; i++) {
             v[i][2] = valorEnX - (i * 50);
+        }
+    }
+
+    public void asignaValoresY() {
+        for (int i = 0; i <= 9; i++) {
+            v[i][1] = 450;
         }
     }
 
