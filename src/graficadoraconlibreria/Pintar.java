@@ -35,7 +35,7 @@ public class Pintar {
 
     public void run(int valorMemoriaRam) {
         try {
-            asignaValoresX();
+            //asignaValoresX();
 
             valor = random.nextInt(11);
             //Si la memoria ram es menor que 0, no la grafica, sino 
@@ -48,7 +48,7 @@ public class Pintar {
             System.out.println("Valor: " + valorMemoriaRam);
             moverValores();
             v[0][0] = valorMemoriaRam;
-            v[0][1] = (800 - (valorMemoriaRam / 10)) / 2 + 50;//Valor de Y, 500 y 50 dependen de los pixeles
+            v[0][1] = (400 - (valorMemoriaRam / 10)) + 50;//Valor de Y, 500 y 50 dependen de los pixeles
             //v[0][2] = valorEnX; //Valor de X
             //}
 
@@ -145,7 +145,7 @@ public class Pintar {
         }
     }
 
-    private void asignaValoresX() {
+    public void asignaValoresX() {
         for (int i = 0; i <= 9; i++) {
             v[i][2] = valorEnX - (i * 50);
         }

@@ -31,15 +31,18 @@ public class MainGrafica {
         @Override
         public void actionPerformed(ActionEvent e) {
             Pintar pintar = new Pintar();
-            pintar.asignaValoresY();
+
             EjecutarScript ejecutar = new EjecutarScript();
             ObtenerMemoria memoria = new ObtenerMemoria();
+
+            pintar.asignaValoresX();
+            pintar.asignaValoresY();
             ejecutar.run();
+            //memoria.leerMemoria("MemoriaRamTotal");
             //memoria.run();
-            System.out.println("Boton Iniciar");
         }
     };
-    
+
     //Evento para que se cambien las graficas
     static ActionListener actionEvent2 = new ActionListener() {
         @Override

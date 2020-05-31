@@ -80,7 +80,7 @@ public class NewMain {
         ObtenerMemoria memoria = new ObtenerMemoria();
 
         ejecutarScript.run();
-        memoria.run();
+        //memoria.run();
 
 //        ObtenerMemoria2 memoria2 = new ObtenerMemoria2();
 //        memoria2.leer();

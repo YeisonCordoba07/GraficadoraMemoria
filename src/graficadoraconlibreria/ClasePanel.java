@@ -19,12 +19,11 @@ public class ClasePanel extends JPanel {
     Pintar pintar = new Pintar();
 
     static boolean cuadricula = false;
+    static int memoriaRamTotal = ObtenerMemoria.memoriaRamTotal;
 
     @Override
     public void paint(Graphics g) {
         super.paint(g);
-        //g.setColor(Color.gray);
-        //g.fillRect(50, 0, 455, 405);
         //Dibuja las lineas grices que definen el tablero o el plano
         if (cuadricula) 
         {
@@ -35,15 +34,17 @@ public class ClasePanel extends JPanel {
                 g.drawLine((i * 50) + 50, 0+50, (i * 50) + 50, 400+50);//Dibuja las lineas verticales
                 if(i != 9){
                      g.drawLine(50, i * 50+50, 500, i * 50+50);//Dibuja lineas horizontales
+                     //Para dibujar mas lineas horizontales descomentar lo siguiente
+                     //g.drawLine(50, i * 50+75, 500, i * 50+75);
                 }    
             }
         } else {
-            //g.setColor(Color.gray);
+            //g.setColor(Color.black);
             g.fillRect(50, 0+50, 455, 405);
 //            g.setColor(Color.gray);
 //            for (int i = 0; i < 10; i++) {
-//                g.drawLine((i * 50) + 50, 0, (i * 50) + 50, 400);//Dibuja las lineas verticales
-//                g.drawLine(50, i * 50 - 50, 500, i * 50 - 50);//Dibuja lineas horizontales
+//                g.drawLine((i * 50) + 50, 0+50, (i * 50) + 50, 400+50);//Dibuja las lineas verticales
+//                g.drawLine(50, i * 50, 500, i * 50);//Dibuja lineas horizontales
 //            }
         }
 
@@ -57,6 +58,12 @@ public class ClasePanel extends JPanel {
             //Esto dibuja los numeros en el eje X que indican el tiempo
             g.setColor(Color.darkGray);
             g.drawString((36 - (i * 4)) + "", i * 49 + 50, 420+50);
+            
+            //Esto dibuja los numeros en el eje Y que indican la Memoria Ram
+            if(i == 0){
+                g.drawString((ObtenerMemoria.memoriaRamTotal*((i)/10.0))+ "", 510, 450-(i*40));
+            }
+            g.drawString((ObtenerMemoria.memoriaRamTotal*((i+1)/10.0))+ "", 510, 420-(i*40));
         }
         //Dibuja las Lineas de X y Y
         g.setColor(Color.white);

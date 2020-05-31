@@ -188,10 +188,10 @@ public class Graficadora extends javax.swing.JFrame {
         // TODO add your handling code here:
         EjecutarScript ejecutarScript = new EjecutarScript();
 
-        ObtenerMemoria memoria = new ObtenerMemoria();
+
 
         ejecutarScript.run();
-        memoria.run();
+
         //repaint();
     }//GEN-LAST:event_jButton1ActionPerformed
 
