@@ -78,7 +78,7 @@ public class ClasePanel extends JPanel {
             g.drawLine(v[i][2], v[i][1], v[i - 1][2], v[i - 1][1]);
             g.drawLine(v[i][2] + 1, v[i][1] + 1, v[i - 1][2] + 1, v[i - 1][1] + 1);
             //Restar 2 en las X para que quede centrado
-            g.fillRect(v[i][2] - 2, v[i][1] - 2, 6, 6);
+            //g.fillRect(v[i][2] - 2, v[i][1] - 2, 6, 6);
         }
         //Hace que la grafica se actulice
         repaint();

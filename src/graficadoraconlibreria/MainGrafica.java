@@ -39,7 +39,7 @@ public class MainGrafica {
             pintar.asignaValoresY();
             ejecutar.run();
             //memoria.leerMemoria("MemoriaRamTotal");
-            //memoria.run();
+            //memoria.agregarAVector();
         }
     };
 
@@ -59,22 +59,27 @@ public class MainGrafica {
         botonColor.setVisible(true);
         botonColor.addActionListener(actionEvent2);
 
+        //botonColor.setLocation(200, 900);
+        //botonIniciar.setLocation(200, 700);
         JFrame jframe = new JFrame("Plano Cartesiano");
 
         jframe.setVisible(true);
         clasePanel.setVisible(true);
 
-        clasePanel.setSize(200, 100);
-        clasePanel.setBounds(0, 0, 500, 400);
+        //clasePanel.setSize(200, 100);
+        clasePanel.setBounds(0, 0, 1100, 1000);
 
-        jframe.setSize(800, 840);
+        jframe.setSize(575, 750);
         jframe.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         jframe.setLayout(new BorderLayout());
-
-        jframe.add(clasePanel);
+        clasePanel.setLayout(null);
+        jframe.setLayout(null);
+        jframe.getContentPane().add(clasePanel);
         jframe.getContentPane().setBackground(Color.MAGENTA);
-        jframe.add(botonIniciar, BorderLayout.EAST);
-        jframe.add(botonColor, BorderLayout.SOUTH);
+        clasePanel.add(botonIniciar);
+        clasePanel.add(botonColor);
+        botonIniciar.setBounds(50, 500, 450, 50);
+        botonColor.setBounds(50, 600, 450, 50);
         //clasePanel.setBackground(Color.CYAN);
 
     }
