@@ -10,40 +10,44 @@ import java.util.TimerTask;
 import java.util.Timer;
 
 /**
+ * Esta clase es la que se encarga de ejecutar el script cada cierto tiempo
  *
  * @author YEISON
  */
-public class EjecutarScript extends Thread {
+public class EjecutarScript {
 
-    @Override
-    public void run() {
-        try {
-            timer.scheduleAtFixedRate(tarea, 1000, 4000);
-
-        } catch (Exception e) {
-            System.out.println("Error gg: " + e);
-        }
+    /**
+     * Este método se es el que se llama para que empiece a ejecutarse el timer.
+     */
+    public void ejecutarTimer() 
+    {
+        timer.scheduleAtFixedRate(tarea, 1000, 4000);
     }
 
     Timer timer = new Timer();
     TimerTask tarea = new TimerTask() {
-
-        //Proceso que se va a ejecutar cada cierto tiempo
+        /**
+         * Este metodo tiene una variable String que se llama link, esta variable tiene la 
+         * direccion en el equipo donde está el script que se ejecutará.
+         * El script guarda en un archivo de texto toda la información que da el comando
+         * systeminfo. Luego va al txt y guarda toda la linea donde está la memoria libre
+         * del sistema en otro txt, y hace los mismo con la memoria ram total.
+         * Despues crea un objeto de la clase ObtenerMemoria que va a los txt con
+         * la memoria libre y la memoria ram total y los pasa a este programa.
+         */
         @Override
-        public void run() {
+        public void run()
+        {
             try {
-                //Ejecuta el script que guarda la memoria Ram en un txt
                 ProcessBuilder p = new ProcessBuilder();
-                //Se puede crear una variable para el nombre del usuario
                 String link = "C:\\Users\\nanop\\Downloads\\MemoriaRam.ps1";
                 p.command("cmd.exe", "/c", link);
                 p.start();
+                
                 ObtenerMemoria obtenerMemoria = new ObtenerMemoria();
-                //obtenerMemoria.leer();
                 obtenerMemoria.leerMemoria("MemoriaUtilizada");
 
             } catch (IOException e) {
-                e.printStackTrace();
             }
         }
     };

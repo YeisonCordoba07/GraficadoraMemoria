@@ -5,14 +5,13 @@
  */
 package graficadoraconlibreria;
 
-import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
-import java.util.Timer;
-import java.util.TimerTask;
 
 /**
- *
+ *Esta clase se encarga de pasar los txt al programa para sacarles el valor
+ * de la memoria ram libre o la memoria ram total, luego con estos saca la memoria 
+ * ram utilizada y la pasa a la clase Pintar para que la agrege al vector
  * @author YEISON
  */
 public class ObtenerMemoria {
@@ -22,13 +21,26 @@ public class ObtenerMemoria {
     static int memoriaRamTotal;
 
 
-
-    public void leerMemoria(String nombreMemoria) {
-        String memorialString = "";
+/**
+ * Este método va a donde está el txt con la informacion y lo guarda en memoriaString,
+ * luego lo recorta con substring() para que solo quede el numero que se está buscando,
+ * y se guarda en memoriaCortada.
+ * Luego le quita los espacios que hay entre los numeros y lo guarda en memoriaSinEspacios,
+ * se le quita el punto para que java no lo interprete como decimal, también le quita los 
+ * espacios que puedan tener al principio o al final y lo convierte a numero.
+ * Por ultimo hace unas operaciones para hallar la memoria utilizada y pasarsela
+ * a la clase Pintar para que la agregue al vector.
+ *
+ * @param nombreMemoria define si se va a sacar la memoria ram libre o la total
+ */
+    public void leerMemoria(String nombreMemoria) 
+    {
+        String memoriaString = "";
         boolean esMemoriaTotal = false;
         try {
-            //Verifica cual memoria hay que sacar, si la Total o la Utilizada
-            if (nombreMemoria.equalsIgnoreCase("MemoriaRamTotal")) {
+            /*Verifica cual memoria hay que sacar, si la Total o la Utilizada*/
+            if (nombreMemoria.equalsIgnoreCase("MemoriaRamTotal")) 
+            {
                 esMemoriaTotal = true;
             } else if (nombreMemoria.equalsIgnoreCase("MemoriaUtilizada")) {
                 esMemoriaTotal = false;
@@ -36,78 +48,66 @@ public class ObtenerMemoria {
                 System.out.println("Error en el parametro entrante al intentar asignar a la general");
             }
 
+            /*Guarda la direccion de donde está el archivo de texto con la informacion*/
             FileReader archivo = null;
-            if (esMemoriaTotal) {
+            if (esMemoriaTotal) 
+            {
                 archivo = new FileReader("C:\\Users\\nanop\\Downloads\\MemoriaTotal.txt");
             } else {
                 archivo = new FileReader("C:\\Users\\nanop\\Downloads\\MemoriaLibre.txt");
             }
 
-            //o salto de linea en el archivo
             int memoria = archivo.read();
-
-            while (memoria != -1) {
+            while (memoria != -1) 
+            {
                 memoria = archivo.read();
-
-                //Al convertirlo a char lo estamos convirtiendo en codigo ASII
+                //Al convertirlo memoriaSinEspacios char lo estamos convirtiendo en codigo ASII
                 char memoriaChar = (char) memoria;
-
                 //Lo agrega al string
-                memorialString += memoriaChar;
+                memoriaString += memoriaChar;
             }
-            System.out.println("Memoria Completa Inicio:\n" + memorialString + "Memoria Completa Final");
-            System.out.println("");
 
-            //Guarda la el valor de la memoria libre en 'memoriaLibreCortada', para ello saca ese valor como una subcadena
-            //Aquí hay que poner la posicion exacta de donde estará la memoria
-//            String memoriaLibreCortada = memoriaLibreString.substring(149, 158);
-//            String memoriaCortada = memorialString.substring(149, 158);
-//            String memoriaLibreCortada = memoriaLibreString.substring(201, 210);
-//            String memoriaCortada = memorialString.substring(201, 210);  
             String memoriaCortada = "";
 
             try {
-                if (esMemoriaTotal) {
+                /*La condicion es en caso de que la memoria ram total y la libre 
+                necesiten contarse de manera diferente*/
+                if (esMemoriaTotal) 
+                {
 
                 } else {
 
                 }
-                memoriaCortada = memorialString.substring(199, 208);
+                /*memoriaString tiene toda la linea con la informacion,
+                en memoriaCortada solo se guarda el numero y se desecha lo otro*/
+                memoriaCortada = memoriaString.substring(199, 208);
             } catch (IndexOutOfBoundsException e) {
                 System.out.println("Error al cortar: " + e);
             }
+            /*Elimina los espacios que tenga al principio o al final*/
             memoriaCortada = memoriaCortada.trim();
-            System.out.println("INICIO MEMORIA CORTE:" + memoriaCortada + ":FIN CORTE");
-            System.out.println("");
 
-            //Le quita los espacios vacios a memoriaLibreCortada y memoriaCortada --> 3_._0_9_2   8_._0_0_2  7_0_9
-
-            String a = "";
-            for (int i = 0; i < memoriaCortada.length(); i++) {
-
-                if (i % 2 == 0) {
+            /*Le quita los espacios vacios memoriaSinEspacios memoriaCortada
+            --> 3_._0_9_2   8_._0_0_2   7_0_9*/
+            String memoriaSinEspacios = "";
+            for (int i = 0; i < memoriaCortada.length(); i++)
+            {
+                if (i % 2 == 0) 
+                {
                     char c = memoriaCortada.charAt(i);
-                    a += Character.toString(c);
-                    a = a.replace("M", "");
-                    a = a.replace("B", "");
-                    a = a.replace(" ", "");
-                    System.out.println("I =" + i + "== A=" + a);
+                    memoriaSinEspacios += Character.toString(c);
+                    memoriaSinEspacios = memoriaSinEspacios.replace("M", "");
+                    memoriaSinEspacios = memoriaSinEspacios.replace("B", "");
+                    memoriaSinEspacios = memoriaSinEspacios.replace(" ", "");
                 }
             }
 
-            //El punto significa mil, pero en java este significa que es un decimal, entonces hay que quitarlo
-            memoriaCortada = a.replace(".", "");
-
-            System.out.println("Memoria cortada sin el punto:" + memoriaCortada);
-
-            //Esto quita los espacios que hayan al principio o al final
+            
+            /*Para java el punto en un numero significa que es un decimal, pero en este caso ese punto
+            significa mil*/
+            memoriaCortada = memoriaSinEspacios.replace(".", "");
             memoriaCortada.trim();
-
-            System.out.println("El tamaño de la " + nombreMemoria + "cortada es: " + memoriaCortada.length());
-
-
-            /*AQUÍ HAY UN ERROR DE JAVA, NO CONVIERTE CORRECTAMENTE APESAR DE QUE ESTÁ BIEN*/
-            //Convierte el valor de la subcadena que tiene la memoria libre a int
+            
             int enteroMemoria = 0;
             try {
                 enteroMemoria = Integer.parseInt(memoriaCortada);
@@ -116,26 +116,37 @@ public class ObtenerMemoria {
             }
 
             archivo.close();
-            //Toma la memoria total del sistema y le resta la memoria libre, para obtener la memoria utilizada
-            if (esMemoriaTotal) {
+            
+            
+            /*Toma la memoria total del sistema y le resta la memoria libre, 
+            para obtener la memoria utilizada*/
+            /*Si la memoria que se estaba sacando era la total, entonces le asigna ese valor a 
+            memoriaRamTotal. 
+            Si la memoria que se sacaba era la libre, verifica que la total
+            no sea cero, si sí lo es, vuelve a ejecutar este metodo para hallar 
+            la total.
+            Cuando tenga la memoria total y la libre, preguta si la memoria que sacó
+            es igual o menor que cero, si lo es, entonces le pasa el valor de 
+            como 0. Si el valor que se sacó no es cero, entonces a la memoria ram
+            total le resta la libre (que fue la que sacó este metodo) para 
+            obtener la memoria ram utilizada*/
+            if (esMemoriaTotal)
+            {
                 this.memoriaRamTotal = enteroMemoria;
-                System.out.println("La" + nombreMemoria + ": " + enteroMemoria + " MB");
             } else {
-                if (memoriaRamTotal == 0) {
+                if (memoriaRamTotal == 0) 
+                {
                     leerMemoria("MemoriaRamTotal");
                 }
-                if (enteroMemoria <= 0) {
+                if (enteroMemoria <= 0) 
+                {
                     pintar.agregarAVector(0);
-                    System.out.println("La" + nombreMemoria + ": " + 0 + " MB");
                 } else {
                     this.memoriaRamUtilizada = this.memoriaRamTotal - enteroMemoria;
                     System.out.println("La" + nombreMemoria + ": " + this.memoriaRamUtilizada + " MB");
                     pintar.agregarAVector(this.memoriaRamUtilizada);
                 }
-
             }
-
-            //Cuando el programa falla, la grafica cae hasta 0, se puede evitar
         } catch (IOException e) {
             // TODO Auto-generated catch block
             System.out.println("Error al leer: "+e);
