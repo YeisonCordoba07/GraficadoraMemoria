@@ -7,10 +7,12 @@ package graficadoraconlibreria;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 
 /**
  *
@@ -27,36 +29,44 @@ public class MainGrafica {
     //Evento para que al dar click empiece a graficar
     static ActionListener actionEvent = (ActionEvent e) -> {
         Pintar pintar = new Pintar();
-        
+
         EjecutarScript ejecutar = new EjecutarScript();
-        ObtenerMemoria memoria = new ObtenerMemoria();
-        
         pintar.asignaValoresX();
         pintar.asignaValoresY();
         ejecutar.ejecutarTimer();
-        //memoria.leerMemoria("MemoriaRamTotal");
-        //memoria.agregarAVector();
+
     };
 
     //Evento para que se cambien las graficas
     static ActionListener actionEvent2 = (ActionEvent e) -> {
         ClasePanel.cuadricula = !ClasePanel.cuadricula;
-        System.out.println("Boton Cambiar Colores");
     };
 
-    public static void main(String[] args) {
+    static JLabel titulo = new JLabel("Memoria Ram Utilizada");
+
+    public static void main(String[] args) 
+    {
         ClasePanel clasePanel = new ClasePanel();
         botonIniciar.setVisible(true);
         botonIniciar.addActionListener(actionEvent);
         botonColor.setVisible(true);
         botonColor.addActionListener(actionEvent2);
 
-        JFrame jframe = new JFrame("Plano Cartesiano");
+        botonIniciar.setFont(new Font("arial", Font.ROMAN_BASELINE, 30));
+        botonColor.setFont(new Font("arial", Font.ROMAN_BASELINE, 30));
+
+        titulo.setBounds(125, -20, 500, 100);
+        titulo.setFont(new Font("arial", Font.ROMAN_BASELINE, 30));
+
+        JFrame jframe = new JFrame("SIMULADOR GRAFICO");
+
         jframe.setResizable(false);
         jframe.setVisible(true);
-        
+
         clasePanel.setVisible(true);
         clasePanel.setBounds(0, 0, 1100, 1000);
+        clasePanel.add(titulo);
+        titulo.setVisible(true);
 
         jframe.setSize(575, 750);
         jframe.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
