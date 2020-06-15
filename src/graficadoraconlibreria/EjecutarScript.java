@@ -21,7 +21,7 @@ public class EjecutarScript {
      */
     public void ejecutarTimer() 
     {
-        timer.scheduleAtFixedRate(tarea, 1000, 4000);
+        timer.scheduleAtFixedRate(tarea, 1000, 7000);
     }
 
     Timer timer = new Timer();

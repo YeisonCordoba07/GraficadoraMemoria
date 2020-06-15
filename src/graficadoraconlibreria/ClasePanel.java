@@ -60,7 +60,7 @@ public class ClasePanel extends JPanel {
 
             //Esto dibuja los numeros en el eje X que indican el tiempo
             g.setColor(Color.darkGray);
-            g.drawString((36 - (i * 4)) + "", i * 49 + 50, 420+50);
+            g.drawString((63 - (i * 7)) + "", i * 49 + 50, 420+50);
             
             //Esto dibuja los numeros en el eje Y que indican la Memoria Ram
             if(i == 0)
